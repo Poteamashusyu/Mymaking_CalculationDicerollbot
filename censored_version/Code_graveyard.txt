@@ -1,0 +1,90 @@
+//Calculation functions and elements->
+const product = (element) => element === '*';
+const quotient = (element) => element === '/';
+const sum = (element) => element === '+';
+const difference = (element) => element === '-';
+
+    var z;
+    let formula = message_content.slice(4)
+    let Calculation = formula.split(' ')
+    while(Calculation.some(product)){
+      let c = Calculation.indexOf('*');
+      z = Number(Calculation[c-1]) * Number(Calculation[c+1])
+      Calculation.splice(c-1, 3, z);
+    }
+    while(Calculation.some(quotient)){
+      let c = Calculation.indexOf('/');
+      z = Number(Calculation[c-1]) / Number(Calculation[c+1])
+      Calculation.splice(c-1, 3, z);
+    }
+    while(Calculation.some(sum)){
+      let c = Calculation.indexOf('+');
+      z = Number(Calculation[c-1]) + Number(Calculation[c+1])
+      Calculation.splice(c-1, 3, z);
+    }
+    while(Calculation.some(difference)){
+      let c = Calculation.indexOf('-');
+      z = Number(Calculation[c-1]) - Number(Calculation[c+1])
+      Calculation.splice(c-1, 3, z);
+    }
+//Old Calculation
+    if(Number.isFinite(Calculation[0])){
+    if(Calculation.length > 1){
+      Calculation.splice(0, 1, 'Err')
+    }
+    message.channel.send('**`' + Calculation[0] + '`** = ' + formula)
+    message_log(message.channel.name, message.author.username, message.content, '計算結果、'　+ formula + ' = *' + Calculation[0] + '*')
+//    }
+
+
+      for(var s = 0; s < 4; s++){
+        check = Calculation.charAt(x+y)
+        if(isFinite(check)){
+          x--;
+        }else{
+          continue;
+        }
+      }
+      for(var t = 0; t < 8; t++){
+        check = Calculation.charAt(z+y)
+        if(isFinite(check)){
+          z++;
+        }else{
+          continue;
+        }
+      }
+
+      
+      //while(Calculation.includes('d')){
+      var y = Calculation.indexOf('d')
+      var x = -1, z = 1;
+      var check;
+      for(var s = 0; s < 4; s++){
+        check = Calculation.charAt(x+y)
+        message.channel.send(check)
+        if(Number.isFinite(check)){
+          x--;
+        }else{
+          continue;
+        }
+      }
+      for(var t = 0; t < 8; t++){
+        check = Calculation.charAt(z+y)
+        if(Number.isFinite(check)){
+          z++;
+        }else{
+          continue;
+        }
+      }
+      //while(Number.isFinite(Calculation.charAt(x+y))){x -= 1;}
+      //while(Number.isFinite(Calculation.charAt(y+z))){z += 1;}
+      var times = Calculation.slice(x+y, y)
+      var param = Calculation.slice(y+1, y+z+1)
+      var cg_str = Calculation.slice(x+y, y+z+1)
+      var result;
+      for(var u = times; u > 0; u--){
+        result += Math.floor(Math.random() * param) + 1;
+      }
+      Calculation.replace(cg_str, result)
+      message.channel.send(Calculation)
+    //}

@@ -1,0 +1,9 @@
+{
+    "Admin_id": ["user_id"
+                ],
+    "Admin_memo(Dont_use)":["user_name_memo"],
+    
+    "Ban_id": [
+       ],
+    "Ban_memo(Dont_use)":[]
+}

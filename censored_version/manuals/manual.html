@@ -1,0 +1,434 @@
+<!--
+    ※htmlファイルのマニュアルを作ってから自分のブログがあるBlogger.comにコピペすること！
+-->
+<!DOCTYPE html>
+<html lang="ja-JP">
+    <head>
+        <title>ディスコ―ド計算&ダイスボット機能集</title>
+        <meta charset="UTF-8">
+        <meta name="author" content="Poteamashusyu">
+        <style>
+        body{
+            color: black;
+        }
+        .attention{
+            font-size: 36;
+            color: red;
+        }
+        .success{
+            color: cyan;
+        }
+        .fontsize140pe{
+            font-size: 140%;
+        }
+        .fontsize32px{
+            font-size: 32px;
+        }
+        .red{color: red;}.yellow{color: #e7e70ff3;}.green{color: #42eb20e7;}.teal{color: #008080;}.b_cyan{background-color: cyan}.b_orange{background-color: #ffd78c;}.b_aquamarine{background-color: aquamarine;}.b_yellow{background-color: yellow;}.b_hotpink{background-color: #ff69b4;}
+        .mg-r44px{margin-right: 44px;}.mg-r64px{margin-right: 64px;}
+        .tblcell_bold{
+            border: 2px #000000 solid;
+        }
+        .rightarrow{
+            position: relative;
+            display: inline-block;
+            padding: 6px 4px 6px 2px;
+            color: #000000;
+            vertical-align: middle;
+            text-decoration: none;
+            font-size: 15px;
+        }
+        .Gam_CCgraph{
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: #1abc9c;
+            background-image: linear-gradient(to right, transparent 50%, #fe8a01 0);
+        }
+        .Gam_CSgraph{
+            margin-left: 22px;
+            width: 450px;
+            position: relative;
+            border: 2px solid #ff69b4;
+        }
+        .Gam_CSgraph .CSgraph_p{
+            height: 1.5em;
+            display: block;
+            position: sticky;
+            line-height: 2em;
+        }
+        .double_border{
+            border: #d80e84 double 3px;
+        }
+        </style>
+    </head>
+
+    <body>
+        <!-- タイトル -->
+        <!-- <h1><div class="attention"><div class="success"></div></div></h1> -->
+        <h2>Discord_Calculation&Diceroll bot v0.6.0 <br>最終更新日時:2021/07/18 2:40 </h2>
+        <!--パッチノートリンク-->
+        <b>(パッチノートは<a href="https://manualofcanddbyp.blogspot.com/2021/07/patchnote-discordcalculation-bot.html">ここをクリック</a>)</b>
+        <!-- 目次 -->
+        <h2>[目次]</h2>
+        <table border="1">
+            <tr><th scope="auto"><a href="#read_attention">[読むにあたっての注意]</a></th></tr>
+            <tr><th scope="auto"><a href="#functions">[通常機能]</a></th></tr>
+            <tr><th scope="auto"><a href="#commands">[_cdコマンド集]</a></th></tr>
+            <tr><th scope="auto"><a href="#cheat_commands">[チートコマンド]</a></th></tr>
+        </table>
+        <!-- 本文 -->
+        <h2 id="read_attention">[読むにあたっての注意]</h2>
+        ・コマンド記述例中にある括弧の分類表はこちら
+        <table border="1">
+            <thead>
+                <tr class="tblcell_bold"><th scope="auto" class="tblcell_bold">表記</th><th scope="auto" class="tblcell_bold">括弧名</th><th scope="auto" class="tblcell_bold">説明</th></tr>
+            </thead>
+            <tbody>
+                <tr><th scope="auto">&nbsp;<>&nbsp;</th><th scope="auto">山括弧(やまかっこ)</th><th scope="auto">括弧内に従って<div class='red'>'必ず'</div>コマンドを入力してください。</th></tr>
+                <tr><th scope="auto">&nbsp;[]&nbsp;</th><th scope="auto">角括弧(かくかっこ), <br>大括弧(だいかっこ)</th><th scope="auto">括弧内に従って<div class='yellow'>'任意で'</div>コマンドを入力してください。</th></tr>
+                <tr><th scope="auto">&nbsp;「」&nbsp;</th><th scope="auto">鉤括弧(がきかっこ)</th><th scope="auto">主に記述例にて示すべき部分を表します。(ほぼ無視して良い)</th></tr>
+            </tbody>
+        </table><br>
+        <h2 id="functions">[通常機能]</h2>
+        <h3><通常機能・目次></h3>
+        <table border="1">
+            <tr><th scope="auto">五十音順</th></tr>
+            <tr><td scope="auto"><a href="#Bot_mension">ボットメンション</a></td></tr>
+            <tr><td scope="auto"><a href="#diceroll">ダイス</a></td></tr>
+        </table><br>
+        <h3><おまけ・目次></h3>
+        <table border="1">
+            <tr><th scope="auto">五十音順</th></tr>
+            <tr><td scope="auto"><a href="#Gurume">グルメス〇イザー</a></td></tr>
+            <tr><td scope="auto"><a href="#Hello_sound">効果音こんにちは</a></td></tr>
+        </table><br>
+        <table border="1" id="Bot_mension">
+            <thead><tr><th colspan="2" scope="auto"><div class="fontsize140pe"><div class="b_orange">・ボットメンション</div></div></h3></th></tr></thead>
+            <tbody>
+                <tr><th scope="auto">機能</th><th scope="auto">ボットをメンションすると様々な反応を返します。(現在4つ登録済み)</th></tr>
+                <tr><th scope="auto">記述</th><th scope="auto">「<@メンション> [整数]」('整数'に数値を入れると狙った反応を返させることが出来ます。1~4)</th></tr>
+                <tr><th scope="auto">例</th><th scope="auto">「@Calculation&Diceroll bot」=> (何らかの反応を返す)</th></tr>
+            </tbody>
+        </table><br>
+        <table border="1" id="diceroll">
+            <thead><tr><th colspan="2" scope="auto"><div class="fontsize140pe"><div class="b_orange">・ダイス</div></div></h3></th></tr></thead>
+            <tbody>
+                <tr><th scope="auto">機能</th><th scope="auto">アルファベット「d」を任意の数字で挟むことでダイスを振ることが出来る。振った結果の合計値を返す。</th></tr>
+                <tr><th scope="auto">記述</th><th scope="auto">「<振る回数整数)>d<面数(整数)>」</th></tr>
+                <tr><th scope="auto">例</th><th scope="auto">「2d10」 => (10面ダイスを2回振った時の合計値を返す)</th></tr>
+                <tr><th scope="auto"><注意></th><th scope="auto">※一度に1億回までしかダイスを振れません。</th></tr>
+            </tbody>
+        </table><br>
+        <table border="1" id="Gurume">
+            <thead><tr><th colspan="2" scope="auto"><div class="fontsize140pe"><div class="b_orange">おまけ:グルメス〇イザー</div></div></h3></th></tr></thead>
+            <tbody>
+                <tr><th scope="auto">機能</th><th scope="auto">「グルメスパイザー」とチャットすることでグルメスパイザーを呼び出すことが出来る。(?)</th></tr>
+                <tr><th scope="auto">記述</th><th scope="auto">「グルメスパイザー」</th></tr>
+                <tr><th scope="auto">例</th><th scope="auto">「グルメスパイザー」 => (グルメスパイザー発動)</th></tr>
+                <tr><th scope="auto">(補足)</th><th scope="auto">ボイスチャンネルに入った状態でチャットすると...?</th></tr>
+            </tbody>
+        </table><br>
+        <table border="1" id="Hello_sound">
+            <thead><tr><th colspan="2" scope="auto"><div class="fontsize140pe"><div class="b_orange">おまけ:効果音こんにちは</div></div></h3></th></tr></thead>
+            <tbody>
+                <tr><th scope="auto">機能</th><th scope="auto">「効果音こんにちは」とチャットすることでHIK〇KINさんばりに大量の効果音でこんにちはを呼び出すことが出来る。(?)</th></tr>
+                <tr><th scope="auto">記述</th><th scope="auto">「効果音こんにちは」</th></tr>
+                <tr><th scope="auto">例</th><th scope="auto">「効果音こんにちは」 => (効果音こんにちは発動)</th></tr>
+                <tr><th scope="auto">(補足)</th><th scope="auto">ボイスチャンネルに入った状態でチャットしてください。</th></tr>
+            </tbody>
+        </table><br>
+        <h2 id="commands">[_cdコマンド集 (コマンドABC順)]</h2>
+        <h3><_cdコマンド目次></h3>
+        <table border="1">
+            <tr><th scope="auto">五十音順</th><th scope="auto">アルファベット順</th></tr>
+            <tr><td><a href="#Mute">一斉ボイスミュート</a></td><td><a href="#Calculation">c</a></td></tr>
+            <tr><td><a href="#Gacha">ガチャ</a></td><td><a href="#Gacha">gacha</a></td></tr>
+            <tr><td><a href="#Gamble">ギャンブル</a></td><td><a href="#Gamble">gamble</a></td></tr>
+            <tr><td><a href="#Lottery">くじ引き</a></td><td><a href="#Help">help</a></td></tr>
+            <tr><td><a href="#Calculation">計算</a></td><td><a href="#Hrgen">hrgen</a></td></tr>
+            <tr><td><a href="#Hrgen">ひらがま生成機</a></td><td><a href="#Lottery">lottery</a></td></tr>
+            <tr><td><a href="#Presence">プリセンス</a></td><td><a href="#Mute">mute</a></td></tr>
+            <tr><td><a href="#Help">ヘルプ</a></td><td><a href="#Presence">presence</a></td></tr>
+            <tr><td><a href="#Riabaku">リア爆</a></td><td><a href="#Riabaku">riabaku</a></td></tr>
+        </table><br>
+        <table border="1" id="Calculation">
+            <thead>
+                <tr><th colspan="2" scope="auto"><div class="fontsize140pe"><div class="b_orange">計算</div></div></h3></th></tr>
+                <tr><th colspan="2" scope="auto"><div class="fontsize140pe"><div class="b_aquamarine">「_cd c ...」</div></div></th></tr>
+            </thead>
+            <tbody>
+                <tr><th scope="auto">機能</th><th scope="auto">式を打ち込むことで計算することが出来る。</th></tr>
+                <tr><th scope="auto">記述</th><th scope="auto">「_cd c <計算式>」</th></tr>
+                <tr><th scope="auto">例</th><th scope="auto">「_cd c 1+2 * 3」 => (7をチャットで返す)</th></tr>
+                <tr><th scope="auto">(補足)</th><th scope="auto">ダイスロール機能と組み合わせて計算することも可能<br>(例:「_cd c 1d10 * 5 + 10」 => (10面ダイスを1回振った合計×5に10加えた計算をする))<br>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　関連:<a href="#diceroll">・ダイス</a></th></tr>
+                <tr><th scope="auto">(補足2)</th><th scope="auto">Javascriptの演算をそのまま利用しているのでMathオブジェクトなども利用することが出来ます。<br><a href="https://developer.mozilla.org/ja/docs/Web/JavaScript/Reference/Global_Objects/Math">---Javascript Mathオブジェクトリファレンスに飛びます---</a></th></tr>
+            </tbody>
+        </table><br>
+        <table border="1" id="Gacha">
+            <thead>
+                <tr><th colspan="2" scope="auto"><div class="fontsize140pe"><div class="b_orange">おまけガチャ</div></div></h3></th></tr>
+                <tr><th colspan="2" scope="auto"><div class="fontsize140pe"><div class="b_aquamarine">「_cd gacha ...」</div></th></tr>
+            </thead>
+            <tbody>
+                <tr><th scope="auto">機能</th><th scope="auto">ガチャ(暇つぶし)を引くことが出来る。ガチャコインのデータを作成することが出来る。</th></tr>
+                <tr><th scope="auto">記述</th><td colspan="2">
+                    <b>_cd gacha ...</b><br><br>
+                        <table border="1">
+                            <tr><th scope="auto">(入力無し)or[1~10の数字]</th><td>>ガチャを引くことが出来る。数字を後に入力することでその回数分引くことが出来る(10回まで)。</td></tr>
+                            <tr><th scope="auto">(タイムリーボーナス)</th><td>>たまにタイムリーボーナス*が手に入る。(*: <a href="#AboutTB">後述</a>)</td></tr>
+                            <tr><th scope="auto">coin</th><td>>自身が持つコインの枚数とリザーブコイン**の枚数を知ることが出来る。(**: <a href="#AboutRC">後述</a>)</td></tr>
+                            <tr><th scope="auto">detail(det)</th><td>>ガチャの詳細をディスコ―ドDMに送信します。</td></tr>
+                            <tr><th scope="auto">has [ページ数]</th><td>>自身が持つアイテムの一覧を表示します。(レアリティ・名前順、1ページ10個)<br>また、所持しているアイテムの合計数を表示します。</td></tr>
+                            <tr><th scope="auto">help</th><td>>簡易的なコマンドヘルプを表示します。</td></tr>
+                            <tr><th scope="auto">lineup <戻すシーズン数></th><td>>自身の引くガチャラインナップを変更します。</td></tr>
+                        </table><br>
+                    </td>
+                </tr>
+                <tr><th scope="auto">例</th><th scope="auto">「_cd gacha」 => (1回ガチャを引き、コインデータがない場合はコインデータを作成する。)</th></tr>
+                <tr><th scope="auto">補足<br>詳細説明</th><td>
+                    <div class="b_cyan"><h3><a id="AboutTB">・タイムリーボーナス<i>*</i></a></h3></div>
+                    ・タイムリーボーナスは数時間間隔で配られるガチャコインイベントです。<br>
+                    ・時間経過後にガチャを回すとタイムリーボーナスが適用され、専用の抽選によって配当を決定します。<br>
+                    ・タイムリーボーナスはガチャを<b class="teal">1回以上</b>回していてコインデータがある<b>プレイヤー全員</b>に配られます。<br>
+                    その際、タイムリーボーナスを行ったプレイヤーは配当が<b class="teal">2倍</b>になります。<br>
+                    ・ガチャを一定時間(48時間程度)回さないと受け取れるボーナス量が<b class="teal">20%に減少</b>します。<br>
+                    <イメージ><br>
+                    <img src="TB_example.jpg" alt="※画像の読み込みに失敗しました。">
+                    <div class="b_cyan"><h3><a id="AboutRC">・リザーブ(予備)コイン<i>**</i></a></h3></div>
+                    ・リザーブコインはボットオーナー(運営者)がガチャラインアップ変更時等に設定します。<br>
+                    リザーブコインが設定されると各々のプレイヤーは次の条件にしたがってコイン・リザーブコイン枚数が変動します。
+                    <h4><span class="b_yellow">※設定枚数500枚のとき</span></h4>
+                    <table border="1">
+                        <tr><th scope="auto">設定枚数より多いプレイヤー</th><td>>設定枚数を超えるコインがリザーブコインに移ります。<br><b>例:</b><br><b>コイン: 600　 <span class="mg-r44px"></span> >>> 　コイン: 500</b><br><b>リザーブコイン: 0　 >>> 　リザーブコイン: 100</b></td></tr>
+                        <tr><th scope="auto">設定枚数以下のプレイヤー</th><td>>特に変化はありません。<br><b>例:</b><br><b>コイン: 450　 <span class="mg-r44px"></span> >>> 　コイン: 450</b><br><b>リザーブコイン: 0　 >>> 　リザーブコイン: 0</b></td></tr>
+                    </table><br>
+                    ・リザーブコインは普通のコインのように使用は出来ません。<br>
+                    ただし次の条件に従ってタイムリーボーナスが配られた際に一定の枚数(100枚前後)のリザーブコインがコインなります。<br><br>
+                    <table border="1">
+                        <tr><th scope="auto">所持リザーブコイン枚数が<br>設定枚数以上のプレイヤー</th><td>>設定枚数分のリザーブコインがコインになります。</td></tr>
+                        <tr><th scope="auto">所持リザーブコイン枚数が<br>1枚以上、設定枚数より少ないプレイヤー</th><td>>持っているリザーブコイン全てがコインになります。</td></tr>
+                        <tr><th scope="auto">リザーブコインがないプレイヤー</th><td>>特に変化はありません。</td></tr>
+                    </table><br>
+                </td></tr>
+            </tbody>
+        </table><br>
+        <table border="1" id="Gamble">
+            <thead>
+                <tr><th colspan="2" scope="auto"><div class="fontsize140pe"><div class="b_orange">投票ギャンブル</div></div></h3></th></tr>
+                <tr><th colspan="2" scope="auto"><div class="fontsize140pe"><div class="b_aquamarine">「_cd gamble ...」,「_cd gam ...」</div></div></th></tr>
+            </thead>
+            <tbody>
+                <tr><th scope="auto">機能</th><th scope="auto">ガチャコインを使用し、投票制ギャンブルを行うことが出来る。</th></tr>
+                <tr><th scope="auto">記述</th><td colspan="2">
+                    <b>_cd gamble ... (「_cd gam ...」)</b><br><br>
+                        <table border="1">
+                            <tr><th scope="auto">bet <パスコード*> <ベット番号> <ベット額></th><td>>受け付け中(開始前)のギャンブルセッション(以下、セッション)にベットします。(*: <a href="#AboutGPW">後述</a>)</td></tr>
+                            <tr><th scope="auto">detail(det)</th><td>>準備中・プレイ中のセッションを検索し詳細を表示します。<br>※実行すると新たにコマンド案内が出るのでそれに従ってください。</td></tr>
+                            <tr><th scope="auto">end <勝利選択肢(名前)></th><td>>自身が主催するプレイ中セッションの結果を確定させてそのセッションを終了します。</td></tr>
+                            <tr><th scope="auto">help</th><td>>投票ギャンブルのコマンド詳細を表示します。</td></tr>
+                            <tr><th scope="auto">open <タイトル> <内容1,2,...,6></th><td>>自身が主催する新しいセッションを作成します。</td></tr>
+                            <tr><th scope="auto">start</th><td>>準備中の自身のセッションを開始(プレイ状態に)します。開始以降、新たにベットすることが出来なくなります。</td></tr>
+                        </table><br>
+                    </td></tr>
+                <tr><th scope="auto">例</th><th scope="auto">
+                    ⓵「_cd gamble bet 4649 1 100」 => (パスコード:4649の準備中セッションの1番に100コインベットする。)<br>
+                    ⓶「_cd gamble open 誰が勝つ？ Aさん Bさん」 => (タイトル:誰が勝つ？で選択肢: Aさん, Bさんのセッションを作成します。)<br>
+                    ⓷「_cd gamble start」 => (自身の準備中セッションを開始(ベット締め切り)します。)<br>
+                    ⓸「_cd gamble end Aさん」 => (自身のプレイ中セッションの当選を「Aさん」にしてセッションを終了します。)</th></tr>
+                <tr><th scope="auto">補足<br>詳細説明</th><td>
+                    <div class="b_cyan"><h3><a id="AboutGPW">・ギャンブルパスコードについて<i>*</i></a></h3></div>
+                    ・このパスコードは0~9999で生成され、セッションを識別して選択するために使われます。<br>
+                    <div class="b_cyan"><h3>◆ギャンブルの仕組みについて</h3></div>
+                    ・この投票ギャンブルは競馬や競艇などに近い(実際とは異なります)システムを採用しています。<br>
+                    実際の配当確定までの過程はこちら...
+                    <h4><div class="b_yellow">・配当確定までの過程 (※当選したのが「No.2」の場合)</div></h4>
+                    1. ベット合計を当選した番号にベットした人に分配します。<br>
+                    2. 一人一人の分配する比率はそれぞれのプレイヤーが当選番号にベットした量に比例します。<br>
+                    <div class="double_border"><b><公式1> <u>(その番号が当選したときの獲得倍率)</u> = (ベット合計額) / (その番号の総ベット額)</b></div>
+                    <table border="1">
+                        <tr><th scope="auto">掛け金合計</th><td>各番での掛け金合計</td><th scope="auto">-ベット内訳-</th></tr>
+                        <tr><th scope="auto" rowspan="4">1000枚</th></tr>
+                        <tr><th scope="auto">No.1: 400枚 (2.5倍)</th><td>(今回は関係ないので省略)...</td></tr>
+                        <tr><th class="b_hotpink" scope="auto">No.2: 100枚 (10倍)</th><td class="b_hotpink"><b>Aさん: 35枚, Bさん: 35枚, Cさん: 30枚</b></td></tr>
+                        <tr><th scope="auto">No.3: 500枚 (2.0倍)</th><td>(今回は関係ないので省略)...</td></tr>
+                    </table><br>
+                    &emsp;&nbsp;
+                    <canvas id='GamGraph' width="480", height="28"></canvas>
+                    <script lang="javascript">
+                        const graph = document.getElementById("GamGraph");
+                        const ctx = graph.getContext("2d");
+                        const x = graph.width, y = graph.height;
+
+                        ctx.fillStyle = 'red'; ctx.fillRect(0, 0, 0.35*x, y)
+                        ctx.fillStyle = 'blue'; ctx.fillRect(0.35*x, 0, 0.35*x, y)
+                        ctx.fillStyle = 'yellow'; ctx.fillRect(0.7*x, 0, 0.3*x, y)
+
+                        ctx.lineWidth = 2;
+                        ctx.strokeStyle = 'black'; ctx.strokeRect(0, 0, x, y)
+
+                        ctx.fillStyle = 'black';
+                        for(let i=0; i < 10; i++) {
+                            ctx.fillRect(i/10*x, 0, 1, y/2)
+                        }
+                    </script>
+                    <br>
+                    &emsp;&nbsp;<b>35%</b><span style='margin: 64px;'></span><b>35%</b><span style='margin: 64px;'></span><b>30%</b><br>
+                    <div class="double_border"><b><公式2> <u>(自身の配当(当選額))</u> = (ベット合計額) * {(自身が当選した番号にベットした額) / (当選した番号の総ベット額)}</b></div>
+                    <table border="1">
+                        <tr><th scope="auto">当選者</th><th scope="auto">計算式</th></tr>
+                        <tr><td>Aさん</td><td> <b>350枚</b> = 1000 * (35 /100)</td></tr>
+                        <tr><td>Bさん</td><td> <b>350枚</b> = 1000 * (35 /100)</td></tr>
+                        <tr><td>Cさん</td><td> <b>400枚</b> = 1000 * (40 /100)</td></tr>
+                    </table><br>
+                    <span class="b_yellow"><b><u>※セッション中の倍率表示は全てこのルールに従って表示しています。</u></b></span>
+                </td></tr>
+                <tr><th scope="auto">(補足2)</th><th scope="auto">短縮形があります。「_cd gam ...」</th></tr>
+            </tbody>
+        </table><br>
+        <table border="1" id="Help">
+            <thead>
+                <tr><th colspan="2" scope="auto"><div class="fontsize140pe"><div class="b_orange">ヘルプ</div></div></h3></th></tr>
+                <tr><th colspan="2" scope="auto"><div class="fontsize140pe"><div class="b_aquamarine">「_cd help」</div></th></tr>
+            </thead>
+            <tbody>
+                <tr><th scope="auto">機能</th><th scope="auto">説明書が書かれたURLがチャンネルに貼られる。</th></tr>
+                <tr><th scope="auto">記述</th><th scope="auto">「_cd help」</th></tr>
+                <tr><th scope="auto">例</th><th scope="auto">「_cd help」 => (このページのURLが貼られる)</th></tr>
+            </tbody>
+        </table><br>
+        <table border="1" id="Hrgen">
+            <thead>
+                <tr><th colspan="2" scope="auto"><div class="fontsize140pe"><div class="b_orange">ひらがな言葉ジェネレータ―</div></div></h3></th></tr>
+                <tr><th colspan="2" scope="auto"><div class="fontsize140pe"><div class="b_aquamarine">「_cd hrgen ...」</div></div></th></tr>
+            </thead>
+            <tbody>
+                <tr><th scope="auto">機能</th><th scope="auto">完全ランダムで指定した文字数のワードを生成する。</th></tr>
+                <tr><th scope="auto">記述</th><th scope="auto">「_cd hrgen <数字>」</th></tr>
+                <tr><th rowspan="2" scope="auto">例</th></tr>
+                    <tr><th scope="auto">「_cd hrgen 8」 => (ランダムなひらがな8文字を繋げたワードをチャットします)</th></tr>
+                <tr><th scope="auto">(補足)</th><th scope="auto">ランダムで選ばれる平仮名は、・五十音 ・濁音半濁音 ・ー(ハイフン) ・「っ」</th></tr>
+            </tbody>
+        </table><br>
+        <table border="1" id="Lottery">
+            <thead>
+                <tr><th colspan="2" scope="auto"><div class="fontsize140pe"><div class="b_orange">くじ引き</div></div></h3></th></tr>
+                <tr><th colspan="2" scope="auto"><div class="fontsize140pe"><div class="b_aquamarine">「_cd lottery ...」,「_cd lot ...」</div></div></th></tr>
+            </thead>
+            <tbody>
+                <tr><th scope="auto">機能</th><th scope="auto">サーバー内で好きなようにくじを作り引くことが出来る。</th></tr>
+                <tr><th scope="auto">記述</th><td colspan="2">
+                    <b>_cd lottery ...</b><br><br>
+                        <table border="1">
+                            <tr><th scope="auto">join [任意の名前]</th><td>>そのチャットしたサーバーのくじ引きに参加できる。<br>[任意の名前] に参加させたい名前を入れるとその名前をくじ引きに参加させることが出来ます。</td></tr>
+                            <tr><th scope="auto">list</th><td>>そのチャットしたサーバーのくじ引き参加リストを確認することが出来る。</td>
+                            <tr><th scope="auto">remove <番号or名前></th><td>>そのチャットしたサーバーのくじ引きリストから<br>自身の名前もしくは該当する番号/名前のエントリーを消去する。</td>
+                            <tr><th scope="auto">reset</th><td>>そのチャットしたサーバーのくじ引きリストを削除します。</td></tr>
+                            <tr><th scope="auto">start [当選人数]</th><td>>そのサーバー内のくじ引きを[当選人数]分引きます。入力がない場合1回引きます。</td></tr>
+                        </table><br>
+                    </td>
+                </tr>
+                <tr><th scope="auto">例</th><th scope="auto">「_cd lottery join」 => (自身のチャンネルニックネームでくじに参加)</th></tr>
+                <tr><th scope="auto">(補足)</th><th scope="auto">短縮して入力できる。(「_cd lot ...」)</th></tr>
+            </tbody>
+        </table><br>
+        <table border="1" id="Mute">
+            <thead>
+                <tr><th colspan="2" scope="auto"><div class="fontsize140pe"><div class="b_orange">一斉ボイスミュート<span class="green">(便利)</span><span class="red">(サーバー管理者権限限定)</span></div></div></h3></th></tr>
+                <tr><th colspan="2" scope="auto"><div class="fontsize140pe"><div class="b_aquamarine">「_cd mute」,「_cd unmute」</div></div></th></tr>
+            </thead>
+            <tbody>
+                <tr><th scope="auto">機能</th><th scope="auto">自分の参加しているボイスチャンネルのメンバー全員を同時にサーバーミュートさせる。<br>(※ボットと普通のミュートしているメンバー除く)</th></tr>
+                <tr><th scope="auto">記述</th><th scope="auto">「_cd mute」,「_cd unmute」</th></tr>
+                <tr><th rowspan="3" scope="auto">例</th></tr>
+                    <tr><th scope="auto">⓵「_cd mute」,「_cd mt」 => (一斉ミュート)</th></tr>
+                    <tr><th scope="auto">⓶「_cd unmute」,「_cd umt」 => (一斉ミュート解除)</th></tr>
+                <tr><th scope="auto">(補足)</th><th scope="auto">例にある通り、短縮形がある。(_cd mt,_cd umt)<br>サーバー管理者権限を持つ人のみ使用可能にしました。(2021/04/17)</th></tr>
+            </tbody>
+        </table><br>
+        <table border="1" id="Ping">
+            <thead>
+                <tr><th colspan="2" scope="auto"><div class="fontsize140pe"><div class="b_orange">ピン！ポン！(ボット応答速度確認)</div></div></h3></th></tr>
+                <tr><th colspan="2" scope="auto"><div class="fontsize140pe"><div class="b_aquamarine">「_cd ping」</div></div></th></tr>
+            </thead>
+            <tbody>
+                <tr><th scope="auto">機能</th><th scope="auto">「Pong!」とチャットで返し、ボット応答速度(参考値)を返します。</th></tr>
+                <tr><th scope="auto">記述</th><th scope="auto">「_cd ping」</th></tr>
+                <tr><th rowspan="2" scope="auto">例</th></tr>
+                    <tr><th scope="auto">「_cd ping」 => (「Pong!」と応答速度をチャットで返す)</th></tr>
+            </tbody>
+        </table><br>
+        <table border="1" id="Presence">
+            <thead>
+                <tr><th colspan="2" scope="auto"><div class="fontsize140pe"><div class="b_orange">プリセンス(アクティビティ)</div></div></h3></th></tr>
+                <tr><th colspan="2" scope="auto"><div class="fontsize140pe"><div class="b_aquamarine">「_cd presence」</div></div></th></tr>
+            </thead>
+            <tbody>
+                <tr><th scope="auto">機能</th><th scope="auto">ボットのプリセンス(表示する情報)のモードを変更することが出来る。</th></tr>
+                <tr><th scope="auto">記述</th><th scope="auto">「_cd presence」</th></tr>
+                <tr><th rowspan="2" scope="auto">例</th></tr>
+                    <tr><th scope="auto">「_cd presence」 => (プリセンスモード変更)</th></tr>
+                <tr><th rowspan="3" scope="auto">モード</th></tr>
+                    <tr><th scope="auto">⓵デフォルトモード(案内1/案内2/タイムリーメーター)</th></tr>
+                    <tr><th scope="auto">⓶タイムリー監視モード(タイムリーメーターのみ)</th></tr>
+                <tr><th scope="auto">(補足)</th><th scope="auto">6秒単位で情報は更新される。(モードによっては同じ情報が更新されることがある。)</th></tr>
+            </tbody>
+        </table><br>
+        <table border="1" id="Riabaku">
+            <thead>
+                <tr><th colspan="2" scope="auto"><div class="fontsize140pe"><div class="b_orange">リア爆</div></div></h3></th></tr>
+                <tr><th colspan="2" scope="auto"><div class="fontsize140pe"><div class="b_aquamarine">「_cd riabaku ...」</div></div></th></tr>
+            </thead>
+            <tbody>
+                <tr><th scope="auto">機能</th><th scope="auto">一定の確率でリア充を爆破(爆発)することが出来る。</th></tr>
+                <tr><th scope="auto">記述</th><th scope="auto">「_cd riabaku [分子or分母] [分母]」</th></tr>
+                <tr><th rowspan="4" scope="auto">例</th></tr>
+                    <tr><th scope="auto">⓵「_cd riabaku」 => (1/10000の確率で爆破させる)</th></tr>
+                    <tr><th scope="auto">⓶「_cd riabaku [分母]」 => (1/[分母]の確率で爆破させる)</th></tr>
+                    <tr><th scope="auto">⓷「_cd riabaku [分子] [分母]」 => ([分子]/[分母]の確率を成功させれば爆破)</th></tr>
+                <tr><th scope="auto">(補足)</th><th scope="auto">ダイスロール機能とほとんど変わらn(ry<br>　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　　関連:<a href="#diceroll">・ダイス</a></th></tr>
+            </tbody>
+        </table><br>
+        <h2 id="cheat_commands">[チートコマンド]</h2>
+        <h3><目次></h3>
+        <table border="1">
+            <tr><th scope="auto">五十音順</th><th scope="auto">アルファベット順</th></tr>
+            <tr><td><a href="#Gacha_cheat">ガチャ(チート)</a></td><td><a href="#Gacha_cheat">_cd gacha ...</a></td></tr>
+        </table><br>
+        <table border="1" id="Gacha_cheat">
+            <thead>
+                <tr><th colspan="2" scope="auto"><div class="fontsize140pe"><div class="b_hotpink">ガチャ(チート)</div></div></h3></th></tr>
+                <tr><th colspan="2" scope="auto"><div class="fontsize140pe"><div class="b_aquamarine">「_cd gacha ...」</div></div></th></tr>
+            </thead>
+            <tbody>
+                <tr><th scope="auto">権限</th><th>・ボットオーナー ・開発者</th></tr>
+                <tr><th scope="auto">記述</th><td scope="auto">
+                    <b>_cd gacha ... </b><br><br>
+                        <table border="1">
+                            <tr><th scope="auto">c <0~100></th><td>>ガチャの景品を選んで取得することが出来ます。</td></tr>
+                            <tr><th scope="auto">gift ...</th><td>
+                                <table border="1">
+                                    <tr><th scope="auto">coin <数値></th><td>>ガチャデータが存在する全員に<数値>分コインを与えます。</td></tr>
+                                    <tr><th scope="auto">coin <数値></th><td>>ガチャデータが存在する全員に<数値>分リザーブコインを与えます。</td></tr>
+                                </table>
+                            </td></tr>
+                            <tr><th scope="auto">p_check</th><td>>選択しているラインナップの景品全ての当選確率を合計した値を返します。<br>(「100%」と返ってくれば正常です。)</td></tr>
+                            <tr><th scope="auto">reserve ...</th><td>
+                                <table border="1">
+                                    <tr><th scope="auto">setall <数値></th><td>>コイン枚数が<数値>分になるように全員のコイン・リザーブを調整します。<br><div style="text-align: right;">(詳細: <a href="#AboutRC">リザーブ(予備)コイン</a>)</div></td></tr>
+                                </table>
+                            </td></tr>
+                            <tr><th scope="auto">setlineup <戻すシーズン数></th><td>>全員の選択ラインナップを設定できます。<戻すシーズン数>を0にすることで最新のラインナップに設定できます。</td></tr>
+                            <tr><th scope="auto">timely ...</th><td>
+                                <table border="1">
+                                    <tr><th scope="auto">allonline</th><td>>全員のガチャ直近使用時刻をこのコマンドを使用した時刻に変更します。</td></tr>
+                                    <tr><th scope="auto">instant</th><td>>タイムリーボーナスを無条件で即発動させます。</td></tr>
+                                </table>
+                            </td></tr>
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table><br>
+    </body>
+</html>
